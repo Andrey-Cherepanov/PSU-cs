@@ -102,16 +102,21 @@ void add_first(node** head)
 
 void add_last(node** head)
 {
-	node* curr = (**head).next;
-	node* temp = NULL;
-	while (curr != NULL) {
-		temp = curr;
-		curr = (*curr).next;
+	if ((**head).next) {
+		node* curr = (**head).next;
+		node* temp = NULL;
+		while (curr != NULL) {
+			temp = curr;
+			curr = (*curr).next;
+		}
+		curr = new node; (*curr).next = NULL;
+		cout << "¬ведите значение узла: "; cin >> (*curr).data;
+		(*temp).next = curr;
+		(**head).data += 1;
 	}
-	curr = new node; (*curr).next = NULL;
-	cout << "¬ведите значение узла: "; cin >> (*curr).data;
-	(*temp).next = curr;
-	(**head).data += 1;
+	else {
+		add_first(head);
+	}
 }
 
 void del_node(node** prev, node** curr) {
@@ -128,9 +133,12 @@ void del_node_by_value(node** head, int val){
 		if ((*curr).data == val) {
 			del_node(&temp, &curr);
 			(**head).data -= 1;
+			curr = (*temp).next;
 		}
-		temp = curr;
-		curr = (*curr).next;
+		else {
+			temp = curr;
+			curr = (*curr).next;
+		}
 	}
 }
 
