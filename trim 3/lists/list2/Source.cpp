@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include <iostream>
+
 using namespace std;
 
 struct node {
@@ -22,13 +24,13 @@ int main() {
 	(*head).next = NULL;
 	(*head).prev = NULL;
 	bool f = true;
-	cout << "1 - ñîçäàòü ñïèñîê;\n" <<
-		"2 - âûâåñòè ñïèñîê;\n" <<
-		"3 - äîáàâèòü óçåë â íà÷àëî ñïèñêà;\n" <<
-		"4 - äîáàâèòü óçåë â êîíåö ñïèñêà;\n" <<
-		"5 - óäàëèòü âñå óçëû ñ çàäàííûì çíà÷åíèåì;\n" <<
-		"6 - óäàëèòü ñïèñîê;\n" <<
-		"0 - çàêîí÷èòü.\n";
+	cout << "1 - ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ ÑÐ¿Ð¸ÑÐ¾Ðº;\n" <<
+		"2 - Ð²Ñ‹Ð²ÐµÑÑ‚Ð¸ ÑÐ¿Ð¸ÑÐ¾Ðº;\n" <<
+		"3 - Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÑƒÐ·ÐµÐ» Ð² Ð½Ð°Ñ‡Ð°Ð»Ð¾ ÑÐ¿Ð¸ÑÐºÐ°;\n" <<
+		"4 - Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÑƒÐ·ÐµÐ» Ð² ÐºÐ¾Ð½ÐµÑ† ÑÐ¿Ð¸ÑÐºÐ°;\n" <<
+		"5 - ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ Ð²ÑÐµ ÑƒÐ·Ð»Ñ‹ Ñ Ð·Ð°Ð´Ð°Ð½Ð½Ñ‹Ð¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸ÐµÐ¼;\n" <<
+		"6 - ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÐ¿Ð¸ÑÐ¾Ðº;\n" <<
+		"0 - Ð·Ð°ÐºÐ¾Ð½Ñ‡Ð¸Ñ‚ÑŒ.\n";
 	int op; int val;
 	while (f) {
 		cout << ">>";
@@ -49,7 +51,7 @@ int main() {
 			add_last(&head);
 			break;
 		case 5:
-			cout << "Ââåäèòå çíà÷åíèå: "; cin >> val;
+			cout << "Â¬Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ: "; cin >> val;
 			del_node_by_value(&head, val);
 			break;
 		case 6:
@@ -59,7 +61,7 @@ int main() {
 			f = false;
 			break;
 		default:
-			cout << "òàêîé êîìàíäû íåò";
+			cout << "Ñ‚Ð°ÐºÐ¾Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð½ÐµÑ‚";
 		}
 	}
 
@@ -71,13 +73,13 @@ void create_list(node** head)
 	node* curr = *head;
 	node* new_n = NULL;
 	int n, data;
-	cout << "Ââåäèòå êîëè÷åñòâî ýëåìåíòîâ â ñïèñêå: "; cin >> n;
+	cout << "Â¬Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð² ÑÐ¿Ð¸ÑÐºÐµ: "; cin >> n;
 	for (int i = 0; i < n; i++) {
 		new_n = new node;
 		(*new_n).next = NULL;
 		(*new_n).prev = curr;
 		(*curr).next = new_n;
-		cout << "Ââåäèòå çíà÷åíèå óçëà: "; cin >> (*new_n).data;
+		cout << "Â¬Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÑƒÐ·Ð»Ð°: "; cin >> (*new_n).data;
 		curr = new_n;
 	}
 	(**head).data = n;
@@ -102,7 +104,7 @@ void print_list(node* head)
 
 void add_first(node** head)
 {
-	cout << "Ââåäèòå çíà÷åíèå óçëà: ";
+	cout << "Â¬Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÑƒÐ·Ð»Ð°: ";
 	node* new_n = new node;
 	(*new_n).next = (**head).next;
 	(*new_n).prev = *head;
@@ -121,7 +123,7 @@ void add_last(node** head)
 		(*new_n).next = NULL;
 		(*new_n).prev = curr;
 		(*curr).next = new_n;
-		cout << "Ââåäèòå çíà÷åíèå óçëà: ";
+		cout << "Â¬Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÑƒÐ·Ð»Ð°: ";
 		cin >> (*new_n).data;
 		(**head).data += 1;
 	}
