@@ -44,17 +44,18 @@ int main() {
 
 void bfs(int n, int v, vector<int>* res)
 {
-	if ((*res).empty()) 
-		visited[v] = 1;
-	for (int i = 0; i < n; i++) {
-		if (matrix[v][i] && !visited[i]) {
-			push(i);
-			visited[i] = true;
+	push(v);
+	visited[v] = 1;
+	while(!empty()){
+		
+		for (int i = 0; i < n; i++) {
+			if (matrix[v][i] && !visited[i]) {
+				push(i);
+				visited[i] = true;
+			}
 		}
+		(*res).push_back(pop());
 	}
-	(*res).push_back(v);
-	if (empty()) return;
-	bfs(n, pop(), res);
 }
 
 void push(int val) {
